@@ -65,7 +65,7 @@ class PlaylistListCreateView(generics.ListCreateAPIView):
             song = Song.objects.get(id=song_id)
             PlaylistSong.objects.create(playlist=playlist, song=song, position=i)
 
-        return Response("The playlist entry has been created", status=status.HTTP_201_CREATED, headers=headers)
+        return Response("The playlist entry has been created.", status=status.HTTP_201_CREATED, headers=headers)
 
 
 
@@ -176,11 +176,11 @@ class PlaylistDetailView(generics.RetrieveUpdateDestroyAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         # return Response(serializer.data)
-        return Response("The name of the playlist has been edited")
+        return Response("The name of the playlist has been edited.")
 
     def delete(self, request, *args, **kwargs):
         instance = self.get_object()
         self.perform_destroy(instance)
-        return Response("The playlist has been deleted")
+        return Response("The playlist has been deleted.")
         # return Response(data={'message': "The playlist has been deleted"}, status=status.HTTP_200_OK)
 
